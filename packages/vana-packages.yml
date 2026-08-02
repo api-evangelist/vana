@@ -1,0 +1,79 @@
+generated: '2026-07-21'
+method: searched
+source: https://registry.npmjs.org (npm search "opendatalabs") + https://pypi.org/pypi/vana/json
+packages:
+  - language: typescript
+    registry: npm
+    name: '@opendatalabs/vana-sdk'
+    version: 3.13.4
+    url: https://www.npmjs.com/package/@opendatalabs/vana-sdk
+    install: npm install @opendatalabs/vana-sdk
+    repository: https://github.com/vana-com/vana-sdk
+    description: Flagship TypeScript SDK for building on the Vana protocol (createDirectDataController, useDirectVanaConnect).
+    license: ISC
+    official: true
+  - language: typescript
+    registry: npm
+    name: '@opendatalabs/vana-react'
+    version: 3.1.0
+    url: https://www.npmjs.com/package/@opendatalabs/vana-react
+    install: npm install @opendatalabs/vana-react
+    description: React hooks and components for Vana Network.
+    official: true
+  - language: typescript
+    registry: npm
+    name: '@opendatalabs/personal-server-ts'
+    version: 1.3.1
+    url: https://www.npmjs.com/package/@opendatalabs/personal-server-ts
+    install: npm install @opendatalabs/personal-server-ts
+    repository: https://github.com/vana-com/personal-server-ts
+    description: Facade package for integrating the Vana Personal Server (with -core protocol logic, -lite browser runtime, -server Hono HTTP server, and -mcp MCP siblings).
+    official: true
+  - language: typescript
+    registry: npm
+    name: '@opendatalabs/personal-server-ts-mcp'
+    version: 0.2.0
+    url: https://www.npmjs.com/package/@opendatalabs/personal-server-ts-mcp
+    install: npm install @opendatalabs/personal-server-ts-mcp
+    repository: https://github.com/vana-com/personal-server-ts
+    description: MCP (Model Context Protocol) server for the Vana Personal Server.
+    official: true
+  - language: typescript
+    registry: npm
+    name: '@opendatalabs/service-auth'
+    version: 1.13.0
+    url: https://www.npmjs.com/package/@opendatalabs/service-auth
+    install: npm install @opendatalabs/service-auth
+    description: OAuth private_key_jwt service-to-service auth helper (RFC 7521/7523/9068) for Vana.
+    official: true
+  - language: javascript
+    registry: npm
+    name: vana-cli
+    version: 0.15.1
+    url: https://www.npmjs.com/package/vana-cli
+    install: npm install -g vana-cli
+    repository: https://github.com/vana-com/vana-cli
+    description: Vana data-portability CLI (binary `vana`).
+    official: true
+  - language: python
+    registry: pypi
+    name: vana
+    version: 0.47.0
+    url: https://pypi.org/project/vana/
+    install: pip install vana
+    repository: https://github.com/vana-com/vana-framework
+    description: Python framework for the Vana network (vana-com/vana-framework).
+    official: true
+  - language: typescript
+    registry: npm
+    name: '@opendatalabs/connect'
+    version: 0.14.0
+    url: https://www.npmjs.com/package/@opendatalabs/connect
+    install: npm install @opendatalabs/connect
+    description: DEPRECATED Connect-flow SDK — superseded by @opendatalabs/vana-sdk per docs.vana.org/llms.txt.
+    official: true
+    deprecated: true
+notes: >-
+  Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist, and crates.io show no
+  first-party Vana client libraries (crates.io "vana" matches are unrelated
+  projects).

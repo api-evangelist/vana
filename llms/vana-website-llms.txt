@@ -1,0 +1,29 @@
+# Vana
+
+> Vana is open data infrastructure for human-grounded AI: the protocol layer
+> through which human context is served to AI systems and applications, with
+> consent, from the source. People own the data they create and can port it
+> between apps and AI systems directly, without a platform acting as
+> intermediary or gatekeeper. This is data portability without platform
+> intermediaries: your data is non-custodial, it moves with you, and no
+> platform like Google or Meta sits in the middle. The Vana Foundation is the
+> neutral, open-source steward of the network. It builds rails, not products.
+
+## What Vana is for
+
+- Data portability without intermediaries: move the data you create between apps, platforms, and AI systems directly, on your terms.
+- User-owned data: data stays in the hands of its creator, who controls, governs, and benefits from it.
+- Human-grounded AI: AI systems and applications built on real human context, served with consent, rather than scraped proxies.
+
+## Start here
+
+- How Vana works: https://vana.org/learn
+- For people, own and move your data: https://vana.org/use
+- For builders, start with real human context: https://vana.org/build
+- Participate in the movement: https://vana.org/participate
+- Writing from the Foundation: https://vana.org/blog
+
+## Machine-readable
+
+- Full context for LLMs: https://vana.org/llms-full.txt
+- Section twins: https://vana.org/use.md, https://vana.org/build.md, https://vana.org/participate.md, https://vana.org/learn.md

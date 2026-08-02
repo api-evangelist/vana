@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.vana.org/protocol-reference/full-specification
+format: vana-protocol-codes
+description: >-
+  Error catalog for the Vana Data Portability Protocol (Personal Server API and
+  DP RPC). The protocol defines 3-digit error codes following the SMTP
+  convention rather than RFC 9457 problem details. First digit: 2xx success,
+  3xx intermediate, 4xx temporary failure, 5xx permanent failure. Second
+  digit: x0x syntax, x1x authentication, x2x data, x3x grants, x4x protocol,
+  x5x rate limiting.
+envelope:
+  shape: |
+    {
+      "error": {
+        "code": 412,
+        "message": "Scope not granted",
+        "details": { }
+      }
+    }
+  field: error
+problems:
+  - code: 200
+    title: Success
+    class: success
+  - code: 201
+    title: Created
+    class: success
+  - code: 401
+    title: Unauthorized (invalid signature)
+    class: authentication
+    remediation: Re-sign the request; Web3Signed authorization uses EIP-191 over the base64url-encoded payload.
+  - code: 403
+    title: Forbidden (valid auth but not permitted)
+    class: authentication
+    remediation: The caller is authenticated but lacks permission for this operation (many endpoints are user-only).
+  - code: 410
+    title: Grant revoked
+    class: grants
+    remediation: The user revoked the grant; request a new grant via the Connect flow.
+  - code: 411
+    title: Grant expired
+    class: grants
+    remediation: The grant expiresAt has passed; request a new grant.
+  - code: 412
+    title: Scope not granted
+    class: grants
+    remediation: The requested scope is not covered by the grant's scopes[]; request a grant covering the scope.
+  - code: 420
+    title: Data unavailable at registry
+    class: data
+    remediation: The referenced data is not available; retry later or verify the file/scope exists.
+  - code: 429
+    title: Rate limited
+    class: rate-limit
+    remediation: Back off and retry; Personal Servers SHOULD implement rate limiting (no mandated thresholds).
+notes:
+  - Grant verification happens on every request — there is no "verify once, access forever".
+  - Unpaid reads return an X-PAYMENT challenge; the SDK settles the data_access fee from escrow and retries with an X-PAYMENT receipt header.

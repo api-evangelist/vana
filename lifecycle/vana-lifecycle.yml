@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.vana.org/protocol-reference/full-specification
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: >-
+    Personal Server REST API is versioned at /v1 (unversioned /health). The
+    normative Data Portability Protocol specification is version 1.0.0; the
+    EIP-712 grant format is v2 (scope-native, replacing the legacy file-based
+    model); the data file envelope is v1.0.
+  docs: https://docs.vana.org/protocol-reference/full-specification
+deprecation:
+  policy_url: null
+  sunset_header: false
+  practice: >-
+    Deprecations are announced in the documentation: the @opendatalabs/connect
+    SDK is deprecated in favor of @opendatalabs/vana-sdk; the docs.vana.com
+    domain and /docs/* URL prefix are retired (recorded in
+    https://docs.vana.org/llms.txt). No formal deprecation-policy page or RFC
+    8594 Sunset-header support is documented.
+deprecated_components:
+  - name: '@opendatalabs/connect'
+    replacement: '@opendatalabs/vana-sdk'
+  - name: docs.vana.com domain (and /docs/* prefix)
+    replacement: https://docs.vana.org
+  - name: Legacy file-enumeration grants (v1)
+    replacement: Scope-native EIP-712 grants (v2)
+maturity_labels: >-
+  Each protocol reference page carries a status callout indicating feature
+  maturity (Live, Rolling Out, Roadmap) — e.g. PGE is in active development,
+  Provenance & Verifiability is coming soon, MCP agent writes are planned.
+sla: null
+status_page: null
+networks:
+  - name: Vana Mainnet
+    rpc: https://rpc.vana.org
+    explorer: https://vanascan.io
+  - name: Moksha Testnet
+    rpc: https://rpc.moksha.vana.org
+    chain_id: 14800
+    explorer: https://moksha.vanascan.io
+    faucet: https://faucet.vana.org

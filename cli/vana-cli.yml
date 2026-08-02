@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/vana-com/vana-cli (cli/README.md)
+name: vana
+description: >-
+  First-party CLI — "Portable personal data, from the terminal." Collects the
+  user's data from platforms via a local browser session and saves it as local
+  JSON (~/.vana/results/), syncing to the user's Personal Server only when
+  explicitly requested. Local-first: credentials never leave the machine.
+  Agent-ready with --json and --no-input flags, plus a built-in MCP server and
+  agent-skill installer. macOS, Linux, Windows (MIT license).
+package: vana-cli (npm) / vana-com/tap (Homebrew)
+install:
+  - method: homebrew
+    command: brew install vana-com/tap/vana
+  - method: shell
+    command: curl -fsSL https://cli.vana.com/install.sh | sh
+    platforms: [macos, linux]
+  - method: powershell
+    command: irm https://cli.vana.com/install.ps1 | iex
+    platforms: [windows]
+  - method: npm
+    command: npm install -g vana-cli
+commands:
+  - group: connect
+    commands:
+      - {command: 'vana connect [source]', description: Connect a platform and collect your data (interactive picker with no source)}
+      - {command: 'vana connect <src> --detach', description: Connect in the background}
+      - {command: 'vana collect [source]', description: Re-collect data from a connected source}
+      - {command: 'vana schedule add', description: Schedule daily collection (launchd/cron)}
+  - group: data
+    commands:
+      - {command: 'vana sources', description: List available platforms}
+      - {command: 'vana data list', description: Show all collected datasets}
+      - {command: 'vana data show <source>', description: Summarize a collected dataset}
+  - group: agents
+    commands:
+      - {command: 'vana mcp', description: Start MCP server (Claude Code, Cursor, etc.)}
+      - {command: 'vana skills', description: Browse and install agent skills interactively}
+      - {command: 'vana skills install <name>', description: Install a skill for your AI agent}
+  - group: ops
+    commands:
+      - {command: 'vana status', description: Connection health and system overview}
+      - {command: 'vana telemetry status', description: Inspect or disable operational telemetry}
+      - {command: 'vana doctor', description: Diagnose installation and runtime health}
+      - {command: 'vana logs [source]', description: View run logs}
+      - {command: 'vana setup', description: Install or repair the browser runtime}
+agent_flags:
+  - {flag: --json, description: Structured output to stdout}
+  - {flag: --no-input, description: Never prompts; exits 1 if input is needed (exit-code matrix in docs/CLI-EXIT-CODE-MATRIX.md)}
+sources_available: [GitHub, ChatGPT, Instagram, LinkedIn, Spotify, YouTube, Shop, Oura Ring, Uber]
+notes: >-
+  Connectors are shared with the DataConnect desktop app
+  (vana-com/data-connect) and vana-com/data-connectors. Telemetry is
+  anonymous/operational, disable via `vana telemetry disable` or
+  VANA_TELEMETRY_DISABLED=1.

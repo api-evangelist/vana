@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.vana.org/protocol-reference/full-specification
+standards:
+  - id: eip-712
+    conforms: true
+    evidence: >-
+      Data-access grants are EIP-712 typed-data signatures (domain "Vana Data
+      Portability" v2) recorded onchain (docs.vana.org/protocol-reference/grants-permissions).
+  - id: eip-191
+    conforms: true
+    evidence: >-
+      Web3Signed request authorization signs the base64url payload with EIP-191
+      (docs.vana.org/protocol-reference/personal-servers).
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      The Context Gateway commercial layer offers OAuth/OIDC
+      (docs.vana.org/applications/context-gateway); @opendatalabs/service-auth
+      implements OAuth private_key_jwt service-to-service auth per RFC
+      7521/7523/9068.
+  - id: oidc
+    conforms: true
+    evidence: Context Gateway OAuth/OIDC layer (optional, distinct from the protocol RPC gateway).
+  - id: json-rpc-evm
+    conforms: true
+    evidence: >-
+      Vana L1 is an EVM-compatible chain exposing standard Ethereum JSON-RPC at
+      https://rpc.vana.org (mainnet) and https://rpc.moksha.vana.org (Moksha,
+      chain 14800); VANA is ERC-20 on Ethereum, Base, Arbitrum, BNB, Optimism,
+      Polygon; bridging uses the LayerZero OFT standard.
+  - id: openpgp
+    conforms: true
+    evidence: Data at rest is OpenPGP password-based encryption with HKDF-SHA256 key derivation from wallet signatures (docs.vana.org/protocol-reference/storage-encryption).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a proprietary {error:{code,message,details}} envelope with 3-digit SMTP-convention protocol codes, not application/problem+json.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: No /.well-known/security.txt on any probed host (see well-known/vana-well-known.yml); disclosure policy lives at docs.vana.org/resources/security.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header support documented.
+  - id: pagination-offset
+    conforms: true
+    evidence: Personal Server list endpoints support limit/offset (+ scopePrefix) query parameters.
+  - id: idempotency-key
+    conforms: false
+    evidence: No idempotency-key header; replay prevention via EIP-712 nonces.
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Personal Server exposes an MCP interface (reads live, writes planned);
+      @opendatalabs/personal-server-ts-mcp; `vana mcp` CLI command.
+notes: >-
+  Smart contracts audited by Nethermind and Hashlock (see
+  security/vana-vulnerability-disclosure.yml); no SOC 2 / ISO 27001 /
+  enterprise compliance program is published, so no Compliance pointer is
+  emitted.

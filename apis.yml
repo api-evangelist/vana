@@ -1,9 +1,29 @@
 aid: vana
 name: Vana
-description: 'Vana is a company surfaced as a portfolio company of paradigm and added to the API Evangelist
-  network as a stub for enrichment. Sector: crypto-ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Vana is an open protocol for user-owned, portable personal data — sovereign
+  data infrastructure for the AI economy. Users store personal data in
+  Personal Servers, grant builders access via signed, scope-native EIP-712
+  permissions, pay protocol fees from an onchain escrow, and revoke access at
+  any time, with all consent recorded on the EVM-compatible Vana L1. Builders
+  integrate through the @opendatalabs/vana-sdk, the Data Portability RPC, a
+  local-first data-collection CLI, and an MCP interface on every Personal
+  Server. Stewarded by the Vana Foundation and developed by Open Data Labs;
+  backed by Paradigm.
 url: https://raw.githubusercontent.com/api-evangelist/vana/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://vana.org/assets/logos/vana-asterisk-data-signal.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,11 +32,54 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Crypto Ai
-apis: []
+- Data Portability
+- Personal Data
+- Data Sovereignty
+- Blockchain
+- Web3
+- Agents
+- Artificial Intelligence
+apis:
+- name: Vana Data Portability RPC
+  description: >-
+    The protocol's read/write boundary — a caching and relay layer between
+    protocol participants and the Vana L1 covering the onchain primitives
+    (identity, permissions, fees, PGE, schemas, files, DLP contracts) with
+    EIP-712 verification and the L1 settlement path. Builders' requests to
+    users' Personal Servers (REST /v1: data, grants, access logs) are
+    authorized with Web3Signed headers under scope-native grants.
+  humanURL: https://docs.vana.org/protocol-reference/dp-rpc
+  baseURL: https://dp-rpc.vana.org
+  tags:
+  - Data Portability
+  - Grants
+  - Permissions
+  - Escrow
+  properties:
+  - type: Documentation
+    url: https://docs.vana.org/protocol-reference/dp-rpc
+  - type: APIReference
+    url: https://docs.vana.org/protocol-reference/personal-servers
+- name: Vana L1 JSON-RPC
+  description: >-
+    Standard Ethereum JSON-RPC for the EVM-compatible Vana L1 blockchain,
+    which records registrations, grants, file records, and schemas. Mainnet
+    at rpc.vana.org (explorer vanascan.io); Moksha testnet at
+    rpc.moksha.vana.org (chain ID 14800, explorer moksha.vanascan.io, faucet
+    faucet.vana.org).
+  humanURL: https://docs.vana.org/network/vana-l1
+  baseURL: https://rpc.vana.org
+  tags:
+  - Blockchain
+  - JSON-RPC
+  - EVM
+  properties:
+  - type: Documentation
+    url: https://docs.vana.org/network/vana-l1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +88,68 @@ maintainers:
 common:
 - type: Website
   url: https://www.vana.org
+- type: DeveloperPortal
+  url: https://docs.vana.org
+- type: Documentation
+  url: https://docs.vana.org
+- type: APIReference
+  url: https://docs.vana.org/protocol-reference/full-specification
+- type: GettingStarted
+  url: https://docs.vana.org/build-a-vana-app
+- type: Support
+  url: https://docs.vana.org/resources/community-discord
+- type: Blog
+  url: https://vana.org/blog
+- type: GitHubOrganization
+  url: https://github.com/vana-com
+- type: TermsOfService
+  url: https://vana.org/terms
+- type: PrivacyPolicy
+  url: https://vana.org/privacy
+- type: SignUp
+  url: https://app.vana.org
+- type: Whitepaper
+  url: https://docs.vana.org/resources/whitepaper
+- type: Packages
+  url: packages/vana-packages.yml
+- type: SDKs
+  url: packages/vana-packages.yml
+- type: WellKnown
+  url: well-known/vana-well-known.yml
+- type: MCPServer
+  url: mcp/vana-mcp.yml
+- type: LLMsTxt
+  url: llms/vana-llms.txt
+  name: docs.vana.org/llms.txt
+- type: LLMsTxt
+  url: llms/vana-website-llms.txt
+  name: vana.org/llms.txt
+- type: Conformance
+  url: conformance/vana-conformance.yml
+- type: ErrorCatalog
+  url: errors/vana-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/vana-lifecycle.yml
+- type: Authentication
+  url: authentication/vana-authentication.yml
+- type: DomainSecurity
+  url: security/vana-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/vana-vulnerability-disclosure.yml
+- type: Security
+  url: https://docs.vana.org/resources/security
+- type: Sandbox
+  url: sandbox/vana-sandbox.yml
+- type: Conventions
+  url: conventions/vana-conventions.yml
+- type: CLI
+  url: cli/vana-cli.yml
+- type: Components
+  url: components/vana-components.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1

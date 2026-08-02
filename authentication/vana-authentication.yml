@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.vana.org/protocol-reference/personal-servers
+docs:
+  - https://docs.vana.org/protocol-reference/identity
+  - https://docs.vana.org/protocol-reference/grants-permissions
+  - https://docs.vana.org/applications/context-gateway
+summary:
+  types: [web3-signed, eip712-grants, oauth2-oidc]
+  notes: >-
+    No OpenAPI securitySchemes exist to derive from; profile captured from the
+    protocol documentation.
+schemes:
+  - name: Web3Signed
+    type: http
+    scheme: web3-signed
+    header: 'Authorization: Web3Signed <base64url(json)>.<signature>'
+    description: >-
+      Wallet-based request signing for the Personal Server REST API. The
+      payload is alphabetically-sorted JSON with aud (server origin), method,
+      uri, bodyHash, iat/exp timestamps, and grantId; the signature is EIP-191
+      over the base64url-encoded string, binding it to a specific server,
+      method, and path.
+  - name: EIP-712 grants (v2)
+    type: grant
+    description: >-
+      Scope-native data-access permissions signed by the user's wallet
+      (domain "Vana Data Portability" version 2; message: grantor, granteeId,
+      scopes[], expiresAt, nonce) and recorded onchain on Vana L1
+      (DataPortabilityPermissions). Verified on every request — existence,
+      non-revocation, expiry, scope coverage, and fee payment.
+  - name: Context Gateway OAuth/OIDC
+    type: oauth2
+    description: >-
+      ODL's optional commercial layer on top of the protocol offers OAuth/OIDC
+      sign-in and USD billing — distinct from the protocol's RPC gateway.
+    docs: https://docs.vana.org/applications/context-gateway
+  - name: Passport
+    type: abstraction
+    description: >-
+      The protocol's authentication abstraction for users, builders, and
+      Personal Servers (wallet-based identity; builder registration via
+      DataPortabilityGrantees, server registration via DataPortabilityServers).
+    docs: https://docs.vana.org/protocol-reference/identity

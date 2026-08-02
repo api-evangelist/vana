@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.vana.org/protocol-reference/full-specification
+docs:
+  - https://docs.vana.org/protocol-reference/personal-servers
+  - https://docs.vana.org/protocol-reference/grants-permissions
+  - https://docs.vana.org/protocol-reference/payments-fees
+description: >-
+  Cross-cutting request/response conventions for the Vana Data Portability
+  Protocol — the Personal Server REST API (/v1) and the Data Portability RPC
+  (https://dp-rpc.vana.org).
+authentication:
+  style: Web3Signed
+  header: 'Authorization: Web3Signed <base64url(json)>.<signature>'
+  detail: >-
+    Payload is alphabetically-sorted JSON (aud = server origin, method, uri,
+    bodyHash, iat, exp, grantId); signature is EIP-191 over the
+    base64url-encoded string. Grants are scope-native EIP-712 signatures (v2:
+    grantor, granteeId, scopes[], expiresAt, nonce) verified on every request.
+  cross_link: authentication/vana-authentication.yml
+idempotency:
+  header: null
+  supported: false
+  detail: >-
+    No idempotency-key header is documented. Replay prevention is achieved via
+    nonces embedded in EIP-712 grants and onchain operations.
+pagination:
+  style: offset
+  params: [limit, offset, scopePrefix]
+  example: GET /v1/data?scopePrefix=instagram&limit=10&offset=0
+versioning:
+  api: URI path (/v1) on the Personal Server API; unversioned /health.
+  protocol: Data Portability Protocol specification 1.0.0; grant format v2 (scope-native EIP-712); data file envelope v1.0.
+  cross_link: lifecycle/vana-lifecycle.yml
+error_envelope:
+  shape: '{"error": {"code": <3-digit protocol code>, "message": "...", "details": {}}}'
+  scheme: >-
+    3-digit protocol codes following SMTP convention (2xx success, 3xx
+    intermediate, 4xx temporary, 5xx permanent; second digit classifies:
+    x0x syntax, x1x auth, x2x data, x3x grants, x4x protocol, x5x rate limit).
+  cross_link: errors/vana-problem-types.yml
+rate_limits:
+  signaling: Protocol error code 429 / x5x class; Personal Servers SHOULD implement rate limiting (no mandated thresholds or backoff).
+payments:
+  flow: X-PAYMENT challenge/receipt
+  detail: >-
+    Unpaid data reads receive an X-PAYMENT challenge; the builder settles the
+    data_access fee from its onchain escrow (deposit/settle/withdraw against
+    FeeRegistry) and retries with an X-PAYMENT receipt header
+    ({opType, opId, amount, asset, paidAt}).
+access_control:
+  detail: >-
+    Role-restricted endpoints: data creation/deletion, grant management, and
+    access logs are user-only; data reads allow users or builders holding
+    valid, unrevoked, unexpired grants covering the scope, with fees paid.

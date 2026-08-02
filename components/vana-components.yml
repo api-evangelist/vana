@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://registry.npmjs.org (npm search "opendatalabs")
+description: >-
+  Client-side / embeddable surfaces for building Vana data-portability flows
+  into apps — distinct from the server-side SDKs catalogued in packages/.
+families:
+  - family: React components & hooks
+    components:
+      - name: '@opendatalabs/vana-react'
+        version: 3.1.0
+        url: https://www.npmjs.com/package/@opendatalabs/vana-react
+        description: >-
+          React hooks and components for Vana Network — including the
+          useDirectVanaConnect hook that drives the client side of the direct
+          data flow (connect, status, result, reset) documented in the Build a
+          Vana App guide.
+      - name: '@opendatalabs/ui'
+        version: 0.0.1
+        url: https://www.npmjs.com/package/@opendatalabs/ui
+        description: React component library for building data-centric interfaces at Vana.com (early, v0.0.1).
+  - family: Embedded Connect flow
+    components:
+      - name: '@opendatalabs/connect-js'
+        version: 1.18.0
+        url: https://www.npmjs.com/package/@opendatalabs/connect-js
+        description: JavaScript SDK for embedding Open Data Labs Connect flows in web apps.
+loader_libraries:
+  - '@opendatalabs/vana-sdk (server + node + react entry points)'
+docs: https://docs.vana.org/build-a-vana-app

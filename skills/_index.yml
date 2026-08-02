@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/vana-com/vana-cli/tree/main/skills (skills/registry.json)
+description: >-
+  Provider-published Agent Skills, saved verbatim from the vana-com/vana-cli
+  repository's skills registry. The `vana skills` / `vana skills install`
+  CLI commands install these for AI agents; `vana mcp` starts the companion
+  MCP server.
+skills:
+  - file: vana-connect-data.md
+    id: connect-data
+    name: Connect Data
+    version: 1.0.0
+    description: How to connect platforms and collect personal data using the vana CLI.
+  - file: vana-create-connector.md
+    id: create-connector
+    name: Create Connector
+    version: 1.0.0
+    description: How to build, test, validate, and contribute a new data connector.
+    supplemental:
+      - https://github.com/vana-com/vana-cli/blob/main/skills/create-connector/reference/PAGE-API.md
+      - https://github.com/vana-com/vana-cli/blob/main/skills/create-connector/reference/PATTERNS.md
+  - file: vana-next-prompt.md
+    id: next-prompt
+    name: Next Prompt
+    version: 1.0.0
+    description: Generate and execute the next agent prompt from connected personal data.

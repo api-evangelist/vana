@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.vana.org/network/vana-l1
+description: >-
+  Vana's test environment is the Moksha testnet — a full parallel deployment
+  of the Vana L1 and the Data Portability Protocol contracts. Builders develop
+  and test apps, grants, and fee flows on Moksha before moving to mainnet.
+environments:
+  - name: Moksha Testnet
+    kind: testnet
+    rpc: https://rpc.moksha.vana.org
+    chain_id: 14800
+    explorer: https://moksha.vanascan.io
+    faucet: https://faucet.vana.org
+    notes: >-
+      Core contract addresses (DataPortabilityPermissions,
+      DataPortabilityServers, DataPortabilityGrantees, DataRegistry,
+      FeeRegistry, staking contracts, chain utilities) are the same on Moksha
+      and Mainnet. The EIP-712 grant examples in the protocol specification
+      use chainId 14800 (Moksha).
+  - name: Vana Mainnet
+    kind: production
+    rpc: https://rpc.vana.org
+    explorer: https://vanascan.io
+test_values:
+  faucet: https://faucet.vana.org
+  note: >-
+    Test VANA is obtained from the faucet; no magic test identifiers, test
+    cards, or test clocks are published — test data flows use real protocol
+    operations against Moksha.
+docs:
+  - https://docs.vana.org/network/vana-l1
+  - https://docs.vana.org/build-a-vana-app
