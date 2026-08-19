@@ -6,32 +6,34 @@ server:
   name: vana-personal-server
   transport: http
   url: null
-  hosting: >-
-    Per-user: each Vana Personal Server exposes its own MCP interface (there is
-    no single hosted MCP endpoint). Agents connect to the user's Personal
-    Server and operate under that user's grants.
+  hosting: 'Per-user: each Vana Personal Server exposes its own MCP interface (there is no single hosted
+    MCP endpoint). Agents connect to the user''s Personal Server and operate under that user''s grants.'
 capabilities:
   reads: live
   writes: planned
-  note: >-
-    "Agent writes over MCP are planned, and the consent UX for agent write
-    access is an open design question." — docs
-authorization: >-
-  Grant-bound access: the user's scope-native EIP-712 grant bounds what the
-  agent may access — scopes, expiry, and revocation all apply unchanged, with
-  every access fee-gated and recorded in the access log, the same as any
-  builder.
+  note: '"Agent writes over MCP are planned, and the consent UX for agent write access is an open design
+    question." — docs'
+authorization: 'Grant-bound access: the user''s scope-native EIP-712 grant bounds what the agent may access
+  — scopes, expiry, and revocation all apply unchanged, with every access fee-gated and recorded in the
+  access log, the same as any builder.'
 implementations:
-  - name: '@opendatalabs/personal-server-ts-mcp'
-    kind: npm-package
-    version: 0.2.0
-    url: https://www.npmjs.com/package/@opendatalabs/personal-server-ts-mcp
-    description: MCP (Model Context Protocol) server package for the Vana Personal Server (vana-com/personal-server-ts, packages/mcp).
-  - name: vana mcp
-    kind: cli-command
-    url: https://github.com/vana-com/vana-cli
-    description: The first-party `vana` CLI starts a local MCP server for agent hosts (Claude Code, Cursor, etc.) over the user's locally collected data.
+- name: '@opendatalabs/personal-server-ts-mcp'
+  kind: npm-package
+  version: 0.2.0
+  url: https://www.npmjs.com/package/@opendatalabs/personal-server-ts-mcp
+  description: MCP (Model Context Protocol) server package for the Vana Personal Server (vana-com/personal-server-ts,
+    packages/mcp).
+- name: vana mcp
+  kind: cli-command
+  url: https://github.com/vana-com/vana-cli
+  description: The first-party `vana` CLI starts a local MCP server for agent hosts (Claude Code, Cursor,
+    etc.) over the user's locally collected data.
 docs: https://docs.vana.org/applications/agents
 related:
-  - https://docs.vana.org/protocol-reference/personal-servers
-  - https://docs.vana.org/protocol-reference/grants-permissions
+- https://docs.vana.org/protocol-reference/personal-servers
+- https://docs.vana.org/protocol-reference/grants-permissions
+deployment:
+  mode: remote
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
